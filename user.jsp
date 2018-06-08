@@ -31,9 +31,10 @@
                 <li><a class="nav-link" data-toggle="tab" href="#tabs-2">Inaktive Nutzer</a></li>
                 <li><a class="nav-link" data-toggle="tab" href="#tabs-3">Archiv</a></li>
                 <li><a class="nav-link" data-toggle="tab" href="#tabs-4">Neuen User Anlegen</a></li>
-                <li>
+                <li class="move_right">
+                    Card Darstellung
                     <label class="switch">
-                        <input type="checkbox" id="cb">
+                        <input type="checkbox" id="cb" checked="checked" onchange="update()">
                         <span class="slider round"></span>
                     </label>
                     <!-- <div class="form-group" onChange="update()">

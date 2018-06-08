@@ -80,3 +80,7 @@ input:checked+.slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
+
+.move_right {
+    margin-left: 25%;
+}

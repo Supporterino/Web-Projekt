@@ -49,7 +49,7 @@ function create_Users() {
     //     }
     // }
 
-    if (!$("#cb").checked) {
+    if ($("#cb").prop("checked")) {
         create_Card();
     } else {
         var locations = ['#tabs-1', '#tabs-2'];
