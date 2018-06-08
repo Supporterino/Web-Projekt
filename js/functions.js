@@ -25,6 +25,10 @@ function search(origin) {
     $("#tbod3 tr").filter(function() {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
+
+    $("#tabs-1 *").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
 }
 
 // Function for Displaying the Data
@@ -35,7 +39,17 @@ function create_Users() {
     $("#tabs-1").append(search);
     $("#tabs-2").append(search2);
 
-    if ($("#sel1").val() == "Card Darstellung") {
+    // if ($("#sel1").val() == "Card Darstellung") {
+    //     create_Card();
+    // } else {
+    //     var locations = ['#tabs-1', '#tabs-2'];
+    //     for (var i = 0; i < 2; i++) {
+    //         create_Tablestructure(locations[i]);
+    //         create_Table(locations[i]);
+    //     }
+    // }
+
+    if (!$("#cb").checked) {
         create_Card();
     } else {
         var locations = ['#tabs-1', '#tabs-2'];

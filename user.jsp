@@ -32,12 +32,16 @@
                 <li><a class="nav-link" data-toggle="tab" href="#tabs-3">Archiv</a></li>
                 <li><a class="nav-link" data-toggle="tab" href="#tabs-4">Neuen User Anlegen</a></li>
                 <li>
-                    <div class="form-group" onChange="update()">
+                    <label class="switch">
+                        <input type="checkbox" id="cb">
+                        <span class="slider round"></span>
+                    </label>
+                    <!-- <div class="form-group" onChange="update()">
                         <select class="form-control" id="sel1">
                               <option>Card Darstellung</option>
                               <option>Tabelle Darstellung</option>
                             </select>
-                    </div>
+                    </div> -->
                 </li>
             </ul>
         </nav>
@@ -49,7 +53,6 @@
 
             <div id="tabs-1" class="tab-pane fade search_card">
                 <!-- <h2>Aktive User</h2> -->
-
             </div>
             <div id="tabs-2" class="tab-pane fade search_card">
                 <!-- <h2>Inaktive User</h2> -->
