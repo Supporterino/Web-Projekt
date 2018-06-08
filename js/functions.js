@@ -305,7 +305,7 @@ function react_User(origin) {
 }
 
 function new_Pass_table(origin) {
-    var id = $(origin).parent().parent().find("h1").attr("id");
+    var id = $(origin).parent().parent().parent().find("h1").attr("id");
     $.ajax({
         type: "POST",
         url: "http://h2669567.stratoserver.net:8080/intranet/update.jsp?action=newpass",
