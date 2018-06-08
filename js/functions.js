@@ -22,6 +22,9 @@ function search(origin) {
     $("#tbod2 tr").filter(function() {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
+    $("#tbod3 tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
 }
 
 // Function for Displaying the Data
@@ -41,6 +44,8 @@ function create_Users() {
             create_Table(locations[i]);
         }
     }
+
+    create_Archive();
 }
 
 // Displaystyle - Cards
@@ -198,6 +203,53 @@ function create_Table(location) {
                 break;
         }
 
+    }
+}
+
+// The Archive
+
+function create_Archive() {
+    var search3 = $("<input type='text' placeholder='Suche nach Namen' id='uSearch3' name='uSearch' onkeyup='search(this)'>");
+
+
+    var table = $("<table class='table table-striped'>");
+    var thead = $("<thead>");
+
+    var tr = $("<tr>");
+
+    var first = $("<td>").text("Vorname");
+    var last = $("<td>").text("Nachname");
+    var role = $("<td>").text("Rolle");
+    var cdate = $("<td>").text("Erstellt am");
+    var ddate = $("<td>").text("Gelöscht am");
+
+    var tbody = $("<tbody id='tbod3'>");
+
+    $("#tabs-3").append(search3, table);
+    $(table).append(thead, tbody);
+    $(thead).append(tr);
+    $(tr).append(first, last, cdate, ddate, role);
+
+    for (var i = 0; i < Users.length; i++) {
+        var trd = $("<tr>");
+
+        var firstd = $("<td>").text(Users[i].firstname);
+        var lastd = $("<td>").text(Users[i].lastname);
+        switch (Users[i].role) {
+            case 2:
+                var roled = $("<td class='role_high'>").text("Administrator");
+                break;
+
+            default:
+                var roled = $("<td>").text("Benutzer");
+                break;
+
+        }
+        var cdated = $("<td>").text(Users[i].creationDate);
+        var ddated = $("<td>").text(Users[i].deletionDate);
+
+        $(tbody).append(trd);
+        $(trd).append(firstd, lastd, cdated, ddated, roled);
     }
 }
 
