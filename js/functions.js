@@ -113,18 +113,18 @@ function create_Table(location) {
                 var btn_del1 = $("<div class='dropdown'>");
                 var btn_del2 = $("<button type='button' class='btn dropdown-toggle' data-toggle='dropdown'>").text("Aktionen");
                 var btn_del3 = $("<div class='dropdown-menu'>");
-                var btn_del4 = $("<a class='dropdown-item' onclick='del_User()'>").text("Delete");
-                var btn_del5 = $("<a class='dropdown-item' onclick='new_Pass()'>").text("New Password");
+                var btn_del4 = $("<a class='dropdown-item' onclick='del_User_table(this)'>").text("Delete");
+                var btn_del5 = $("<a class='dropdown-item' onclick='new_Pass_table(this)'>").text("New Password");
                 break;
             case "#tabs-2":
-                var react_btn = $("<button class='btn btn-block blockify' onclick='react_User()'>").text("Reaktivieren");
+                var react_btn = $("<button class='btn btn-block blockify' onclick='react_User_table(this)'>").text("Reaktivieren");
                 break;
             default:
                 break;
         }
 
 
-        td3.attr('id', Users[i].id);
+        td1.attr('id', Users[i].id);
         switch (location) {
             case "#tabs-1":
                 if (!Users[i].hasOwnProperty('deletionDate')) {
@@ -248,6 +248,20 @@ function add_User() {
     }
 }
 
+function del_User_table(origin) {
+    var id = $(origin).parent().parent().parent().find("td").attr("id");
+    $.ajax({
+        type: "POST",
+        url: "http://h2669567.stratoserver.net:8080/intranet/update.jsp?action=deluser",
+        data: {
+            userid: id
+        },
+        success: function(response) {
+            positiv_Feedback(response);
+        }
+    });
+}
+
 function del_User(origin) {
     var id = $(origin).parent().parent().find("h1").attr("id");
     $.ajax({
@@ -262,11 +276,39 @@ function del_User(origin) {
     });
 }
 
+function react_User_table(origin) {
+    var id = $(origin).parent().find("h1").attr("id");
+    $.ajax({
+        type: "POST",
+        url: "http://h2669567.stratoserver.net:8080/intranet/update.jsp?action=actuser",
+        data: {
+            userid: id
+        },
+        success: function(response) {
+            positiv_Feedback(response);
+        }
+    });
+}
+
 function react_User(origin) {
     var id = $(origin).parent().parent().find("h1").attr("id");
     $.ajax({
         type: "POST",
         url: "http://h2669567.stratoserver.net:8080/intranet/update.jsp?action=actuser",
+        data: {
+            userid: id
+        },
+        success: function(response) {
+            positiv_Feedback(response);
+        }
+    });
+}
+
+function new_Pass_table(origin) {
+    var id = $(origin).parent().parent().find("h1").attr("id");
+    $.ajax({
+        type: "POST",
+        url: "http://h2669567.stratoserver.net:8080/intranet/update.jsp?action=newpass",
         data: {
             userid: id
         },
