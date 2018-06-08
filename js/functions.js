@@ -9,6 +9,16 @@ $(function() {
     });
 })
 
+function search(origin) {
+    var value = $(origin).val().toLowerCase();
+    $("#tbod1 tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+    $("#tbod2 tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+}
+
 function update() {
     $("#tabs-1").html("");
     $("#tabs-2").html("");
@@ -148,8 +158,10 @@ function create_Table(location) {
 }
 
 function create_Users() {
-    var search = $("<input type='text' placeholder='Suche nach Namen' id='uSearch' name='uSearch'>");
+    var search = $("<input type='text' placeholder='Suche nach Namen' id='uSearch' name='uSearch' onkeyup='search(this)'>");
+    var search2 = $("<input type='text' placeholder='Suche nach Namen' id='uSearch2' name='uSearch' onkeyup='search(this)'>");
     $("#tabs-1").append(search);
+    $("#tabs-2").append(search2);
     if ($("#sel1").val() == "Card Darstellung") {
         create_Card();
     } else {
