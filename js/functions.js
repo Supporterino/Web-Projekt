@@ -158,7 +158,8 @@ function create_Card() {
             $(span1).append(del_btn);
             $(span2).append(newpw_btn);
         } else {
-            $("#tabs-2").append(card);
+            $("#tabs-2").append(card_holder);
+            $(card_holder).append(card);
             $(card).append(card_header, card_body);
             $(card_header).append(header);
             $(card_body).append(sub_title1, sub_title2, span1);
