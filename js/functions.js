@@ -67,9 +67,58 @@ function create_Users() {
 function create_Card() {
     for (var i = 0; i < Users.length; i++) {
 
-        var main_div = $("<div class='user-box'></div>");
-        var sec_div = $("<div class='card user'>");
-        var third_div = $("<div class='card-body'>");
+        // var main_div = $("<div class='user-box'></div>");
+        // var sec_div = $("<div class='card user'>");
+        // var third_div = $("<div class='card-body'>");
+
+        // var header = $("<h1 class='card-title'>").text(Users[i].firstname + ' ' + Users[i].lastname);
+        // header.attr('id', Users[i].id);
+
+        // if (Users[i].hasOwnProperty('deletionDate')) {
+        //     var sub_title1 = $("<h6 class='card-subtitle creation blockify'>").text('Gelöscht am:' + Users[i].deletionDate);
+        // } else {
+        //     var sub_title1 = $("<h6 class='card-subtitle creation blockify'>").text('Erstellt am:' + Users[i].creationDate);
+        // }
+        // switch (Users[i].role) {
+        //     case 2:
+        //         var sub_title2 = $("<h6 class='card-subtitle creation role_high blockify'>").text("Administrator");
+        //         break;
+
+        //     default:
+        //         var sub_title2 = $("<h6 class='card-subtitle creation blockify'>").text("Benutzer");
+        //         break;
+
+        // }
+
+        // var span1 = $("<span class='deluser'>");
+        // var span2 = $("<span class='deluser'>");
+
+        // if (Users[i].hasOwnProperty('deletionDate')) {
+        //     var react_btn = $("<button class='btn btn-block blockify' onclick='react_User(this)'>").text("Reaktivieren");
+        // } else {
+        //     var del_btn = $("<button class='btn btn-block blockify' onclick='del_User(this)'>").text("Delete");
+        //     var newpw_btn = $("<button class='btn btn-block blockify' onclick='new_Pass(this)'>").text("New Password");
+        // }
+
+        // if (!Users[i].hasOwnProperty('deletionDate')) {
+        //     $("#tabs-1").append(main_div);
+        //     $(main_div).append(sec_div);
+        //     $(sec_div).append(third_div);
+        //     $(third_div).append(header, sub_title1, sub_title2, span1, span2);
+        //     $(span1).append(del_btn);
+        //     $(span2).append(newpw_btn);
+        // } else {
+        //     $("#tabs-2").append(main_div);
+        //     $(main_div).append(sec_div);
+        //     $(sec_div).append(third_div);
+        //     $(third_div).append(header, sub_title1, sub_title2, span1, span2);
+        //     $(span1).append(react_btn);
+        // }
+
+        var card_holder = $("<div class='user-box'></div>");
+        var card = $("<div class='card user'></div>");
+        var card_header = $("<div class='card-header'>");
+        var card_body = $("<div class='card-body'>");
 
         var header = $("<h1 class='card-title'>").text(Users[i].firstname + ' ' + Users[i].lastname);
         header.attr('id', Users[i].id);
@@ -101,17 +150,18 @@ function create_Card() {
         }
 
         if (!Users[i].hasOwnProperty('deletionDate')) {
-            $("#tabs-1").append(main_div);
-            $(main_div).append(sec_div);
-            $(sec_div).append(third_div);
-            $(third_div).append(header, sub_title1, sub_title2, span1, span2);
+            $("#tabs-1").append(card_holder);
+            $(card_holder).append(card);
+            $(card).append(card_header, card_body);
+            $(card_header).append(header);
+            $(card_body).append(sub_title1, sub_title2, span1, span2);
             $(span1).append(del_btn);
             $(span2).append(newpw_btn);
         } else {
-            $("#tabs-2").append(main_div);
-            $(main_div).append(sec_div);
-            $(sec_div).append(third_div);
-            $(third_div).append(header, sub_title1, sub_title2, span1, span2);
+            $("#tabs-2").append(card);
+            $(card).append(card_header, card_body);
+            $(card_header).append(header);
+            $(card_body).append(sub_title1, sub_title2, span1);
             $(span1).append(react_btn);
         }
     }
@@ -371,7 +421,8 @@ function add_User() {
 // Delete User
 
 function del_User(origin) {
-    var id = $(origin).parent().parent().find("h1").attr("id");
+    // var id = $(origin).parent().parent().find("h1").attr("id");
+    var id = $(origin).parent().parent().parent().find("div").find("h1").attr("id");
 
     $.ajax({
         type: "POST",
@@ -403,7 +454,8 @@ function del_User_table(origin) {
 // New Password
 
 function new_Pass(origin) {
-    var id = $(origin).parent().parent().find("h1").attr("id");
+    // var id = $(origin).parent().parent().find("h1").attr("id");
+    var id = $(origin).parent().parent().parent().find("div").find("h1").attr("id");
 
     $.ajax({
         type: "POST",
@@ -435,7 +487,8 @@ function new_Pass_table(origin) {
 // Reactivate User
 
 function react_User(origin) {
-    var id = $(origin).parent().parent().find("h1").attr("id");
+    //var id = $(origin).parent().parent().find("h1").attr("id");
+    var id = $(origin).parent().parent().parent().find("div").find("h1").attr("id");
 
     $.ajax({
         type: "POST",

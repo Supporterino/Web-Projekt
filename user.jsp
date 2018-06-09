@@ -32,8 +32,7 @@
                 <li><a class="nav-link" data-toggle="tab" href="#tabs-3">Archiv</a></li>
                 <li><a class="nav-link" data-toggle="tab" href="#tabs-4">Neuen User Anlegen</a></li>
                 <li class="move_right">
-                    Card Darstellung
-                    <label class="switch">
+                    <label class="switch" data-toggle="tooltip" title="Card Darstellung" data-placement="bottom">
                         <input type="checkbox" id="cb" checked="checked" onchange="update()">
                         <span class="slider round"></span>
                     </label>
