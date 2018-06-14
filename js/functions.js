@@ -347,7 +347,7 @@ function clear_Form() {
 }
 
 function positiv_Feedback(response) {
-    if (response.status == "OK") {
+    if (response.status == "ok") {
         var div_feedback = $("<div class='alert alert-success alert-dismissible'>").text("Aktion erfolgreich!");
         var close_btn = $("<button type='button' class='close' data-dismiss='alert' onclick='update()'>").text("X");
         $("#http-status").append(div_feedback);
@@ -358,7 +358,7 @@ function positiv_Feedback(response) {
 }
 
 function create_Error(Message) {
-    var div_error = $("<div class='alert alert-success alert-dismissible'>").text(Message);
+    var div_error = $("<div class='alert alert-danger alert-dismissible'>").text(Message);
     var close_btn = $("<button type='button' class='close' data-dismiss='alert' onclick='update()'>").text("X");
     $("#http-status").append(div_error);
     $(div_error).append(close_btn);

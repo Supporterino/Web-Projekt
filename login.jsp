@@ -45,8 +45,8 @@
 
         <div id="login">
             <form action='login.jsp' method='POST'>
-                <input type='email' name='email' focus placeholder='username@example.de' data-toggle="tooltip" title="E-Mail Adresse" data-placement="bottom"><br>
-                <input type='password' name='password' placeholder="*****" data-toggle="tooltip" title="Passwort" data-placement="bottom"><br>
+                <input id="email" type='email' name='email' focus placeholder='username@example.de' data-toggle="tooltip" title="E-Mail Adresse" data-placement="bottom"><br>
+                <input id="password" type='password' name='password' placeholder="*****" data-toggle="tooltip" title="Passwort" data-placement="bottom"><br>
                 <button type="button" class="btn" onclick="login()">Log In</button>
             </form>
         </div>
