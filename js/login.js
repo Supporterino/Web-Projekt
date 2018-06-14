@@ -6,6 +6,7 @@ function login() {
     $.ajax({
         type: "POST",
         url: "http://h2669567.stratoserver.net:8080/intranet/update.jsp?action=login",
+        cache: false,
         data: {
             email: $("#email").val(),
             password: $("#password").val()

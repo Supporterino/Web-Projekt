@@ -399,6 +399,7 @@ function add_User() {
         $.ajax({
             type: "POST",
             url: "http://h2669567.stratoserver.net:8080/intranet/update.jsp?action=newuser",
+            cache: false,
             data: {
                 email: $("#email").val(),
                 firstname: $("#vname").val(),
@@ -428,6 +429,7 @@ function del_User(origin) {
     $.ajax({
         type: "POST",
         url: "http://h2669567.stratoserver.net:8080/intranet/update.jsp?action=deluser",
+        cache: false,
         data: {
             userid: id
         },
@@ -443,6 +445,7 @@ function del_User_table(origin) {
     $.ajax({
         type: "POST",
         url: "http://h2669567.stratoserver.net:8080/intranet/update.jsp?action=deluser",
+        cache: false,
         data: {
             userid: id
         },
@@ -461,6 +464,7 @@ function new_Pass(origin) {
     $.ajax({
         type: "POST",
         url: "http://h2669567.stratoserver.net:8080/intranet/update.jsp?action=newpass",
+        cache: false,
         data: {
             userid: id
         },
@@ -476,6 +480,7 @@ function new_Pass_table(origin) {
     $.ajax({
         type: "POST",
         url: "http://h2669567.stratoserver.net:8080/intranet/update.jsp?action=newpass",
+        cache: false,
         data: {
             userid: id
         },
@@ -494,6 +499,7 @@ function react_User(origin) {
     $.ajax({
         type: "POST",
         url: "http://h2669567.stratoserver.net:8080/intranet/update.jsp?action=actuser",
+        cache: false,
         data: {
             userid: id
         },
@@ -509,6 +515,7 @@ function react_User_table(origin) {
     $.ajax({
         type: "POST",
         url: "http://h2669567.stratoserver.net:8080/intranet/update.jsp?action=actuser",
+        cache: false,
         data: {
             userid: id
         },
