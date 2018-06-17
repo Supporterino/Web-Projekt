@@ -26,8 +26,8 @@ function search(origin) {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
 
-    $("#tabs-1 *").filter(function() {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    $("#tabs-1 h1").filter(function() {
+        $(this).parent().parent().toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
 }
 
