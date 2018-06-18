@@ -122,19 +122,19 @@ function create_Tablestructure(location) {
 
     var tr = $("<tr>");
 
-    var first = $("<td>").text("Vorname");
-    var last = $("<td>").text("Nachname");
-    var role = $("<td>").text("Rolle");
-    var action = $("<td>").text("Aktionen");
+    var first = $("<th>").text("Vorname");
+    var last = $("<th>").text("Nachname");
+    var role = $("<th>").text("Rolle");
+    var action = $("<th>").text("Aktionen");
 
     switch (location) {
         case "#tabs-1":
             var tbody = $("<tbody id='tbod1'>");
-            var date = $("<td>").text("Erstellt am");
+            var date = $("<th>").text("Erstellt am");
             break;
         case "#tabs-2":
             var tbody = $("<tbody id='tbod2'>");
-            var date = $("<td>").text("Gelöscht am");
+            var date = $("<th>").text("Gelöscht am");
             break;
         default:
             break;
