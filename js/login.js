@@ -1,3 +1,7 @@
+// This is the JavaScript Code for the Login of the intranet
+// @authors Martin Stöcker, Julian Schwart, Florian Jonkheer and Lars Roth
+// v1.0
+
 $(function() {
     $('[data-toggle="tooltip"]').tooltip();
 })

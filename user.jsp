@@ -1,8 +1,12 @@
+<!-- This is the  Mainpage for the User-Management of the intranet
+@authors Martin Stöcker, Julian Schwart, Florian Jonkheer and Lars Roth
+v1.0 -->
 <!DOCTYPE html>
 <html lang="de">
 
 <head>
     <meta charset="utf-8" />
+    <meta name="author" content="Martin Stöcker, Julian Schwart, Florian Jonkheer und Lars Roth">
     <title>Intranet User Manager</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous" />
 
