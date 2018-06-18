@@ -6,7 +6,6 @@
     <title>Intranet User Manager</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous" />
 
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
@@ -14,7 +13,6 @@
     <script src="js/functions.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=no" />
-    <link rel="stylesheet" href="css/intranet.css" />
     <link rel="stylesheet" href="css/user.css" />
 </head>
 
@@ -33,15 +31,9 @@
                 <li><a class="nav-link" data-toggle="tab" href="#tabs-4">Neuen User Anlegen</a></li>
                 <li class="move_right">
                     <label class="switch" data-toggle="tooltip" title="Card Darstellung" data-placement="bottom">
-                        <input type="checkbox" id="cb" checked="checked" onchange="update()">
+                        <input type="checkbox" id="cb" checked="checked" onchange="switch_View()">
                         <span class="slider round"></span>
                     </label>
-                    <!-- <div class="form-group" onChange="update()">
-                        <select class="form-control" id="sel1">
-                              <option>Card Darstellung</option>
-                              <option>Tabelle Darstellung</option>
-                            </select>
-                    </div> -->
                 </li>
             </ul>
         </nav>
@@ -90,7 +82,7 @@
                         </select>
                 </div>
 
-                <button type="button" class="btn" onclick="add_User()">Submit</button>
+                <button type="button" class="btn btn-block" onclick="add_User()">Submit</button>
 
             </div>
 

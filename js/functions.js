@@ -1,6 +1,6 @@
 // This is the JavaScript Code for the User-Management of the intranet
 // @authors Martin Stöcker, Julian Schwart, Florian Jonkheer and Lars Roth
-// v1.1
+// v1.2
 
 // Inital Documentloading Function
 var Users;
@@ -29,6 +29,10 @@ function search(origin) {
     $("#tabs-1 h1").filter(function() {
         $(this).parent().parent().toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
+
+    $("#tabs-2 h1").filter(function() {
+        $(this).parent().parent().toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
 }
 
 // Function for Displaying the Data
@@ -38,16 +42,6 @@ function create_Users() {
     var search2 = $("<input type='text' placeholder='Suche nach Namen' id='uSearch2' name='uSearch' onkeyup='search(this)'>");
     $("#tabs-1").append(search);
     $("#tabs-2").append(search2);
-
-    // if ($("#sel1").val() == "Card Darstellung") {
-    //     create_Card();
-    // } else {
-    //     var locations = ['#tabs-1', '#tabs-2'];
-    //     for (var i = 0; i < 2; i++) {
-    //         create_Tablestructure(locations[i]);
-    //         create_Table(locations[i]);
-    //     }
-    // }
 
     if ($("#cb").prop("checked")) {
         create_Card();
@@ -66,55 +60,6 @@ function create_Users() {
 
 function create_Card() {
     for (var i = 0; i < Users.length; i++) {
-
-        // var main_div = $("<div class='user-box'></div>");
-        // var sec_div = $("<div class='card user'>");
-        // var third_div = $("<div class='card-body'>");
-
-        // var header = $("<h1 class='card-title'>").text(Users[i].firstname + ' ' + Users[i].lastname);
-        // header.attr('id', Users[i].id);
-
-        // if (Users[i].hasOwnProperty('deletionDate')) {
-        //     var sub_title1 = $("<h6 class='card-subtitle creation blockify'>").text('Gelöscht am:' + Users[i].deletionDate);
-        // } else {
-        //     var sub_title1 = $("<h6 class='card-subtitle creation blockify'>").text('Erstellt am:' + Users[i].creationDate);
-        // }
-        // switch (Users[i].role) {
-        //     case 2:
-        //         var sub_title2 = $("<h6 class='card-subtitle creation role_high blockify'>").text("Administrator");
-        //         break;
-
-        //     default:
-        //         var sub_title2 = $("<h6 class='card-subtitle creation blockify'>").text("Benutzer");
-        //         break;
-
-        // }
-
-        // var span1 = $("<span class='deluser'>");
-        // var span2 = $("<span class='deluser'>");
-
-        // if (Users[i].hasOwnProperty('deletionDate')) {
-        //     var react_btn = $("<button class='btn btn-block blockify' onclick='react_User(this)'>").text("Reaktivieren");
-        // } else {
-        //     var del_btn = $("<button class='btn btn-block blockify' onclick='del_User(this)'>").text("Delete");
-        //     var newpw_btn = $("<button class='btn btn-block blockify' onclick='new_Pass(this)'>").text("New Password");
-        // }
-
-        // if (!Users[i].hasOwnProperty('deletionDate')) {
-        //     $("#tabs-1").append(main_div);
-        //     $(main_div).append(sec_div);
-        //     $(sec_div).append(third_div);
-        //     $(third_div).append(header, sub_title1, sub_title2, span1, span2);
-        //     $(span1).append(del_btn);
-        //     $(span2).append(newpw_btn);
-        // } else {
-        //     $("#tabs-2").append(main_div);
-        //     $(main_div).append(sec_div);
-        //     $(sec_div).append(third_div);
-        //     $(third_div).append(header, sub_title1, sub_title2, span1, span2);
-        //     $(span1).append(react_btn);
-        // }
-
         var card_holder = $("<div class='user-box'></div>");
         var card = $("<div class='card user'></div>");
         var card_header = $("<div class='card-header'>");
@@ -320,11 +265,20 @@ function create_Archive() {
 
 // Utility Functions
 
-function update() {
+function switch_View() {
+    clear_Tabs();
+    create_Users();
+}
+
+function clear_Tabs() {
     $("#tabs-1").html("");
     $("#tabs-2").html("");
     $("#tabs-3").html("");
     $("#http-status").html("");
+}
+
+function update() {
+    clear_Tabs();
     get_Data();
 }
 
@@ -423,7 +377,6 @@ function add_User() {
 // Delete User
 
 function del_User(origin) {
-    // var id = $(origin).parent().parent().find("h1").attr("id");
     var id = $(origin).parent().parent().parent().find("div").find("h1").attr("id");
 
     $.ajax({
@@ -458,7 +411,6 @@ function del_User_table(origin) {
 // New Password
 
 function new_Pass(origin) {
-    // var id = $(origin).parent().parent().find("h1").attr("id");
     var id = $(origin).parent().parent().parent().find("div").find("h1").attr("id");
 
     $.ajax({
@@ -493,7 +445,6 @@ function new_Pass_table(origin) {
 // Reactivate User
 
 function react_User(origin) {
-    //var id = $(origin).parent().parent().find("h1").attr("id");
     var id = $(origin).parent().parent().parent().find("div").find("h1").attr("id");
 
     $.ajax({
