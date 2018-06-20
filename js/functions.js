@@ -1,6 +1,6 @@
 // This is the JavaScript Code for the User-Management of the intranet
 // @authors Martin Stöcker, Julian Schwart, Florian Jonkheer and Lars Roth
-// v1.2
+// v1.3
 
 // Inital Documentloading Function
 var Users;
@@ -16,6 +16,9 @@ $(function() {
 
 function search(origin) {
     var value = $(origin).val().toLowerCase();
+
+    // Searching in Tableview
+
     $("#tbod1 tr").filter(function() {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
@@ -25,6 +28,8 @@ function search(origin) {
     $("#tbod3 tr").filter(function() {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
+
+    //Searching in Cardview
 
     $("#tabs-1 h1").filter(function() {
         $(this).parent().parent().toggle($(this).text().toLowerCase().indexOf(value) > -1)
@@ -36,6 +41,8 @@ function search(origin) {
 }
 
 // Function for Displaying the Data
+
+// Displaying the Searchbars
 
 function create_Users() {
     var search = $("<input type='text' placeholder='Suche nach Namen' id='uSearch' name='uSearch' onkeyup='search(this)'>");
@@ -60,19 +67,29 @@ function create_Users() {
 
 function create_Card() {
     for (var i = 0; i < Users.length; i++) {
+
+        // Create basic card-structure
+
         var card_holder = $("<div class='user-box'></div>");
         var card = $("<div class='card user'></div>");
         var card_header = $("<div class='card-header'>");
         var card_body = $("<div class='card-body'>");
 
+        //Create card-heading also known as name
+
         var header = $("<h1 class='card-title'>").text(Users[i].firstname + ' ' + Users[i].lastname);
         header.attr('id', Users[i].id);
+
+        // Decides if user is deleted or not and gives it the right date to show
 
         if (Users[i].hasOwnProperty('deletionDate')) {
             var sub_title1 = $("<h6 class='card-subtitle creation blockify'>").text('Gelöscht am:' + Users[i].deletionDate);
         } else {
             var sub_title1 = $("<h6 class='card-subtitle creation blockify'>").text('Erstellt am:' + Users[i].creationDate);
         }
+
+        // Determinates the role of the user and adds it as card-information
+
         switch (Users[i].role) {
             case 2:
                 var sub_title2 = $("<h6 class='card-subtitle creation role_high blockify'>").text("Administrator");
@@ -84,8 +101,12 @@ function create_Card() {
 
         }
 
+        // Creation of the placeholder for the buttons
+
         var span1 = $("<span class='deluser'>");
         var span2 = $("<span class='deluser'>");
+
+        // Creation of the button considering the state of the user which buttons are needed
 
         if (Users[i].hasOwnProperty('deletionDate')) {
             var react_btn = $("<button class='btn btn-block blockify' onclick='react_User(this)'>").text("Reaktivieren");
@@ -93,6 +114,8 @@ function create_Card() {
             var del_btn = $("<button class='btn btn-block blockify' onclick='del_User(this)'>").text("Delete");
             var newpw_btn = $("<button class='btn btn-block blockify' onclick='new_Pass(this)'>").text("New Password");
         }
+
+        // Adds the cards to the according tab (Active/Deleted)
 
         if (!Users[i].hasOwnProperty('deletionDate')) {
             $("#tabs-1").append(card_holder);
@@ -117,8 +140,13 @@ function create_Card() {
 // Tableheader
 
 function create_Tablestructure(location) {
+
+    // Creation of tablestructure
+
     var table = $("<table class='table table-striped'>");
     var thead = $("<thead>");
+
+    // Creation of the tableheadings
 
     var tr = $("<tr>");
 
@@ -126,6 +154,8 @@ function create_Tablestructure(location) {
     var last = $("<th>").text("Nachname");
     var role = $("<th>").text("Rolle");
     var action = $("<th>").text("Aktionen");
+
+    // Creation the datecolumn considering the position of the table
 
     switch (location) {
         case "#tabs-1":
@@ -140,6 +170,8 @@ function create_Tablestructure(location) {
             break;
     }
 
+    // Adding the table to the given tab as parameter of the function
+
     $(location).append(table);
     $(table).append(thead, tbody);
     $(thead).append(tr);
@@ -149,13 +181,22 @@ function create_Tablestructure(location) {
 // Tabledata
 
 function create_Table(location) {
+
+    // Cycling  through the Users array and creation a tablerow for each one
+
     for (var i = 0; i < Users.length; i++) {
 
+        // Creation of the tablerow
+
         var tr = $("<tr>");
+
+        // Creation of first- & lastname column
 
         var first = $("<td>").text(Users[i].firstname);
         first.attr('id', Users[i].id);
         var last = $("<td>").text(Users[i].lastname);
+
+        // Creation fo datecolumn considering if user is active or deleted
 
         switch (location) {
             case "#tabs-1":
@@ -167,6 +208,9 @@ function create_Table(location) {
             default:
                 break;
         }
+
+        // Creation of rolecolumn considering the users role
+
         switch (Users[i].role) {
             case 2:
                 var role = $("<td class='role_high'>").text("Administrator");
@@ -177,6 +221,8 @@ function create_Table(location) {
                 break;
 
         }
+
+        // Creation of the buttons considering the needed ones
 
         switch (location) {
             case "#tabs-1":
@@ -193,6 +239,7 @@ function create_Table(location) {
                 break;
         }
 
+        // Adding the row to the given tab as function parameter
 
         switch (location) {
             case "#tabs-1":
@@ -219,11 +266,17 @@ function create_Table(location) {
 // The Archive
 
 function create_Archive() {
+
+    // Creation of the Searchbar
+
     var search3 = $("<input type='text' placeholder='Suche nach Namen' id='uSearch3' name='uSearch' onkeyup='search(this)'>");
 
+    //  Creation of the tablestructure
 
     var table = $("<table class='table table-striped'>");
     var thead = $("<thead>");
+
+    // Creation of the tableheadings
 
     var tr = $("<tr>");
 
@@ -235,16 +288,28 @@ function create_Archive() {
 
     var tbody = $("<tbody id='tbod3'>");
 
+    // Adding the tablestructure to the tab
+
     $("#tabs-3").append(search3, table);
     $(table).append(thead, tbody);
     $(thead).append(tr);
     $(tr).append(first, last, cdate, ddate, role);
 
+    // Cycling  through the Users array and creation a tablerow for each one
+
     for (var i = 0; i < Users.length; i++) {
+
+        //  Creation of tablerow
+
         var trd = $("<tr>");
+
+        // Creation of the first- & lastname column
 
         var firstd = $("<td>").text(Users[i].firstname);
         var lastd = $("<td>").text(Users[i].lastname);
+
+        // Creation of the rolecolumn considering the role of the user
+
         switch (Users[i].role) {
             case 2:
                 var roled = $("<td class='role_high'>").text("Administrator");
@@ -255,8 +320,13 @@ function create_Archive() {
                 break;
 
         }
+
+        // Creation of the datecolumn
+
         var cdated = $("<td>").text(Users[i].creationDate);
         var ddated = $("<td>").text(Users[i].deletionDate);
+
+        // Adding the row to the table
 
         $(tbody).append(trd);
         $(trd).append(firstd, lastd, cdated, ddated, roled);
@@ -266,11 +336,17 @@ function create_Archive() {
 // Utility Functions
 
 function switch_View() {
+
+    // Function for switching views
+
     clear_Tabs();
     create_Users();
 }
 
 function clear_Tabs() {
+
+    // Function which clears the content of the tabs
+
     $("#tabs-1").html("");
     $("#tabs-2").html("");
     $("#tabs-3").html("");
@@ -278,11 +354,17 @@ function clear_Tabs() {
 }
 
 function update() {
+
+    // Function for updating
+
     clear_Tabs();
     get_Data();
 }
 
 function check_Equality() {
+
+    // Function to check if both entered passwords are equal
+
     var password1 = $("#password").val();
     var password2 = $("#password2").val();
     if (password1 == password2) {
@@ -293,6 +375,9 @@ function check_Equality() {
 }
 
 function clear_Form() {
+
+    // Function to clear the inputs in the "New User" tab
+
     $("#password").val('').blur();
     $("#password2").val('').blur();
     $("#email").val('').blur();
@@ -301,19 +386,37 @@ function clear_Form() {
 }
 
 function positiv_Feedback(response) {
+
+    // Function to create a response status node
+
     if (response.status == "ok") {
+
+        // Creation of the status node with success message
+
         var div_feedback = $("<div class='alert alert-success alert-dismissible'>").text("Aktion erfolgreich!");
         var close_btn = $("<button type='button' class='close' data-dismiss='alert' onclick='update()'>").text("X");
+
+        // Adding the node to the top of the page
+
         $("#http-status").append(div_feedback);
         $(div_feedback).append(close_btn);
     } else {
+
+        // Sends error to the error-function
+
         create_Error(response.message);
     }
 }
 
 function create_Error(Message) {
+
+    // Creation of the error node
+
     var div_error = $("<div class='alert alert-danger alert-dismissible'>").text(Message);
     var close_btn = $("<button type='button' class='close' data-dismiss='alert' onclick='update()'>").text("X");
+
+    // Adding the node to the top of the page
+
     $("#http-status").append(div_error);
     $(div_error).append(close_btn);
 }
@@ -361,12 +464,8 @@ function add_User() {
                 password: $("#password").val(),
                 role: role
             },
-            success: function(msg) {
-                var main_div = $("<div class='alert alert-success'>").text("Benutzer erfolgreich erstellt!");
-                $("#http-status").append(main_div);
-            },
-            error: function(XMLHttpRequest, textStatus, errorThrown) {
-                create_Error(errorThrown);
+            success: function(response) {
+                positiv_Feedback(response);
             }
         });
 

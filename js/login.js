@@ -1,6 +1,6 @@
 // This is the JavaScript Code for the Login of the intranet
 // @authors Martin Stöcker, Julian Schwart, Florian Jonkheer and Lars Roth
-// v1.0
+// v1.1
 
 $(function() {
     $('[data-toggle="tooltip"]').tooltip();
@@ -22,20 +22,37 @@ function login() {
 }
 
 function positiv_Feedback(response) {
+
+    // Function to create a response status node
+
     if (response.status == "ok") {
-        var div_feedback = $("<div class='alert alert-success alert-dismissible'>").text("Login erfolgreich!");
+
+        // Creation of the status node with success message
+
+        var div_feedback = $("<div class='alert alert-success alert-dismissible'>").text("Aktion erfolgreich!");
         var close_btn = $("<button type='button' class='close' data-dismiss='alert' onclick='update()'>").text("X");
+
+        // Adding the node to the top of the page
+
         $("#http-status").append(div_feedback);
         $(div_feedback).append(close_btn);
-        window.location.href = "./user.jsp";
     } else {
+
+        // Sends error to the error-function
+
         create_Error(response.message);
     }
 }
 
 function create_Error(Message) {
+
+    // Creation of the error node
+
     var div_error = $("<div class='alert alert-danger alert-dismissible'>").text(Message);
     var close_btn = $("<button type='button' class='close' data-dismiss='alert' onclick='update()'>").text("X");
+
+    // Adding the node to the top of the page
+
     $("#http-status").append(div_error);
     $(div_error).append(close_btn);
 }
