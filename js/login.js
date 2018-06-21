@@ -9,9 +9,10 @@ $(function() {
 function login() {
     $.ajax({
         type: "POST",
-        url: "http://h2669567.stratoserver.net:8080/intranet/update.jsp?action=login",
+        url: "http://h2669567.stratoserver.net:8080/intranet/update.jsp",
         cache: false,
         data: {
+            action: 'login',
             email: $("#email").val(),
             password: $("#password").val()
         },
@@ -67,7 +68,7 @@ function positiv_Feedback(response) {
 
         // Forwarding to logged_in View
 
-        logged_in()
+        logged_in();
 
     } else {
 
