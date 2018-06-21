@@ -14,7 +14,7 @@ v1.0 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
-    <script src="js/functions.js"></script>
+    <script src="js/user.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=no" />
     <link rel="stylesheet" href="css/user.css" />
@@ -29,7 +29,7 @@ v1.0 -->
 
         <nav id="tabs">
             <ul class="nav nav-tabs">
-                <li><a class="nav-link" data-toggle="tab" href="#tabs-1">Aktive User</a></li>
+                <li><a class="nav-link active show" data-toggle="tab" href="#tabs-1">Aktive User</a></li>
                 <li><a class="nav-link" data-toggle="tab" href="#tabs-2">Inaktive Nutzer</a></li>
                 <li><a class="nav-link" data-toggle="tab" href="#tabs-3">Archiv</a></li>
                 <li><a class="nav-link" data-toggle="tab" href="#tabs-4">Neuen User Anlegen</a></li>
@@ -47,7 +47,7 @@ v1.0 -->
 
         <div class="tab-content">
 
-            <div id="tabs-1" class="tab-pane fade search_card">
+            <div id="tabs-1" class="tab-pane fade search_card active show">
                 <!-- <h2>Aktive User</h2> -->
             </div>
             <div id="tabs-2" class="tab-pane fade search_card">

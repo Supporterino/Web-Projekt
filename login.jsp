@@ -30,12 +30,33 @@ v1.0 -->
         <div id="http-status">
         </div>
 
-        <div id="login">
-            <form action='login.jsp' method='POST'>
+        <div class="tab-content">
+        <div id="login" class="tab-pane fade active show">
+            <form>
                 <input id="email" type='email' name='email' focus placeholder='username@example.de' data-toggle="tooltip" title="E-Mail Adresse" data-placement="bottom"><br>
                 <input id="password" type='password' name='password' placeholder="*****" data-toggle="tooltip" title="Passwort" data-placement="bottom"><br>
                 <button type="button" class="btn btn-block shrink" onclick="login()">Log In</button>
             </form>
+        </div>
+
+        <div id="logged_in" class="tab-pane fade center">
+            <div>
+                <h2>Willkommen im Intranet.</h2>
+                Sie wurden erfolgreich eingeloggt.
+            </div>
+            <div>
+            <button type="button" class="btn nav_pane" onclick="window.location.href='user.jsp'">Benutzer-Management</button>
+            <button type="button" class="btn nav_pane" onclick="window.location.href='ConferenceRoomManager.jsp'">Conference Room Manager</button>
+            <button type="button" class="btn nav_pane" onclick="window.location.href='Chat.jsp'">Chat</button>
+            <button type="button" class="btn nav_pane" onclick="window.location.href='calendar.jsp'">Kalender</button>
+            <button type="button" class="btn nav_pane" onclick="window.location.href='customer.jsp'">Kunden Manager</button>
+            <button type="button" class="btn nav_pane" onclick="window.location.href='Comolaints.jsp'">Complaint Management</button>
+            <button type="button" class="btn nav_pane" onclick="window.location.href='crm.jsp'">Customer Relationship Management</button>
+            <button type="button" class="btn nav_pane" onclick="window.location.href='Tags.jsp'">Tags</button>
+
+            <button type="button" class="btn btn-block shrink" onclick="logout()">Logout</button>
+            </div>
+        </div>
         </div>
     </div>
 

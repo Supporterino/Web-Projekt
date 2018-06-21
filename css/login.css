@@ -59,8 +59,21 @@ form {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    border: 1px solid #efefef;
 }
 
 h1 {
+    text-align: center;
+}
+
+.nav_pane {
+    white-space: normal;
+    width: 200px;
+    margin: 1%;
+    border: 1px solid #efefef;
+    height: 100px;
+}
+
+.center {
     text-align: center;
 }
