@@ -35,7 +35,7 @@ v1.0 -->
             <form>
                 <input id="email" type='email' name='email' focus placeholder='username@example.de' data-toggle="tooltip" title="E-Mail Adresse" data-placement="bottom"><br>
                 <input id="password" type='password' name='password' placeholder="*****" data-toggle="tooltip" title="Passwort" data-placement="bottom"><br>
-                <button type="button" class="btn btn-info btn-lg shrink" onclick="login()"><i class="fas fa-sign-in-alt"></i> Log In</button>
+                <button type="button" class="btn shrink" onclick="login()"><i class="fas fa-sign-in-alt"></i> Log In</button>
             </form>
         </div>
 
@@ -46,9 +46,9 @@ v1.0 -->
             </div>
             <div>
 
-            <button type="button" class="btn btn-info btn-lg" onclick="window.location.href='index.jsp'"><i class="fas fa-home"></i> Zur Startseite</button>
+            <button type="button" class="btn nav_pane" onclick="window.location.href='index.jsp'"><i class="fas fa-home"></i> Zur Startseite</button>
 
-            <button type="button" class="btn btn-info btn-lg" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Log out</button>
+            <button type="button" class="btn nav_pane" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Log out</button>
             </div>
         </div>
         </div>
