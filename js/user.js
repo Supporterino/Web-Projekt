@@ -110,10 +110,10 @@ function create_Card() {
         // Creation of the button considering the state of the user which buttons are needed
 
         if (Users[i].hasOwnProperty('deletionDate')) {
-            var react_btn = $("<button class='btn btn-block blockify' onclick='react_User(this)'>").text("Reaktivieren");
+            var react_btn = $("<button class='btn btn-block blockify' onclick='react_User(this)'>").text(" Reaktivieren");
         } else {
-            var del_btn = $("<button class='btn btn-block blockify' onclick='del_User(this)'>").text("Delete");
-            var newpw_btn = $("<button class='btn btn-block blockify' onclick='new_Pass(this)'>").text("New Password");
+            var del_btn = $("<button class='btn btn-block blockify' onclick='del_User(this)'>").text(' Delete');
+            var newpw_btn = $("<button class='btn btn-block blockify' onclick='new_Pass(this)'>").text(" New Password");
         }
 
         // Adds the cards to the according tab (Active/Deleted)
@@ -125,7 +125,9 @@ function create_Card() {
             $(card_header).append(header);
             $(card_body).append(sub_title1, sub_title2, span1, span2);
             $(span1).append(del_btn);
+            $(del_btn).prepend("<i class='fas fa-trash-alt'></i>");
             $(span2).append(newpw_btn);
+            $(newpw_btn).prepend('<i class="fas fa-key"></i>');
         } else {
             $("#tabs-2").append(card_holder);
             $(card_holder).append(card);
@@ -133,6 +135,7 @@ function create_Card() {
             $(card_header).append(header);
             $(card_body).append(sub_title1, sub_title2, span1);
             $(span1).append(react_btn);
+            $(react_btn).prepend('<i class="fas fa-recycle"></i>');
         }
     }
 }
@@ -228,13 +231,13 @@ function create_Table(location) {
         switch (location) {
             case "#tabs-1":
                 var dropdown = $("<div class='dropdown'>");
-                var dropdown_button = $("<button type='button' class='btn dropdown-toggle' data-toggle='dropdown'>").text("Aktionen");
+                var dropdown_button = $("<button type='button' class='btn dropdown-toggle' data-toggle='dropdown'>").text(" Aktionen");
                 var dropdown_menu = $("<div class='dropdown-menu'>");
-                var dropdown_item1 = $("<a class='dropdown-item' onclick='del_User(this)'>").text("Delete");
-                var dropdown_item2 = $("<a class='dropdown-item' onclick='new_Pass(this)'>").text("New Password");
+                var dropdown_item1 = $("<a class='dropdown-item' onclick='del_User(this)'>").text(" Delete");
+                var dropdown_item2 = $("<a class='dropdown-item' onclick='new_Pass(this)'>").text(" New Password");
                 break;
             case "#tabs-2":
-                var react_btn = $("<button class='btn btn-block blockify' onclick='react_User(this)'>").text("Reaktivieren");
+                var react_btn = $("<button class='btn btn-block blockify' onclick='react_User(this)'>").text(" Reaktivieren");
                 break;
             default:
                 break;
@@ -249,12 +252,16 @@ function create_Table(location) {
                     $(tr).append(first, last, date, role, dropdown);
                     $(dropdown).append(dropdown_button, dropdown_menu);
                     $(dropdown_menu).append(dropdown_item1, dropdown_item2);
+                    $(dropdown_button).prepend('<i class="fas fa-user-cog"></i>');
+                    $(dropdown_item1).prepend("<i class='fas fa-trash-alt'></i>");
+                    $(dropdown_item2).prepend('<i class="fas fa-key"></i>');
                 }
                 break;
             case "#tabs-2":
                 if (Users[i].hasOwnProperty('deletionDate')) {
                     $("#tbod2").append(tr);
                     $(tr).append(first, last, date, role, react_btn);
+                    $(react_btn).prepend('<i class="fas fa-recycle"></i>');
                 }
                 break;
             default:
@@ -281,11 +288,11 @@ function create_Archive() {
 
     var tr = $("<tr>");
 
-    var first = $("<td>").text("Vorname");
-    var last = $("<td>").text("Nachname");
-    var role = $("<td>").text("Rolle");
-    var cdate = $("<td>").text("Erstellt am");
-    var ddate = $("<td>").text("Gelöscht am");
+    var first = $("<th>").text("Vorname");
+    var last = $("<th>").text("Nachname");
+    var role = $("<th>").text("Rolle");
+    var cdate = $("<th>").text("Erstellt am");
+    var ddate = $("<th>").text("Gelöscht am");
 
     var tbody = $("<tbody id='tbod3'>");
 

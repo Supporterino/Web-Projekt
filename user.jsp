@@ -13,7 +13,8 @@ v1.0 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    
     <script src="js/user.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=no" />
@@ -29,11 +30,11 @@ v1.0 -->
 
         <nav id="tabs">
             <ul class="nav nav-tabs">
-                <li><a class="nav-link active show" data-toggle="tab" href="#tabs-1">Aktive User</a></li>
-                <li><a class="nav-link" data-toggle="tab" href="#tabs-2">Inaktive Nutzer</a></li>
-                <li><a class="nav-link" data-toggle="tab" href="#tabs-3">Archiv</a></li>
-                <li><a class="nav-link" data-toggle="tab" href="#tabs-4">Neuen User Anlegen</a></li>
-                <li class="move_right">
+                <li class="nav-item"><a class="nav-link active show" data-toggle="tab" href="#tabs-1"><i class="fas fa-users"></i> Aktive User</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tabs-2"><i class="fas fa-users"></i> Inaktive Nutzer</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tabs-3"><i class="fas fa-archive"></i> Archiv</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tabs-4"><i class="fas fa-user-plus"></i> Neuen User Anlegen</a></li>
+                <li class="move_right nav-item">
                     <label class="switch" data-toggle="tooltip" title="Card Darstellung" data-placement="bottom">
                         <input type="checkbox" id="cb" checked="checked" onchange="switch_View()">
                         <span class="slider round"></span>
@@ -86,7 +87,7 @@ v1.0 -->
                         </select>
                 </div>
 
-                <button type="button" class="btn btn-block" onclick="add_User()">Submit</button>
+                <button type="button" class="btn btn-block" onclick="add_User()"><i class="fas fa-plus-square"></i> Submit</button>
 
             </div>
 

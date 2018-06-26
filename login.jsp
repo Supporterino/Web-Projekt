@@ -14,7 +14,7 @@ v1.0 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <script src="js/login.js"></script>
     <link rel="stylesheet" href="css/login.css">
 </head>
@@ -35,26 +35,20 @@ v1.0 -->
             <form>
                 <input id="email" type='email' name='email' focus placeholder='username@example.de' data-toggle="tooltip" title="E-Mail Adresse" data-placement="bottom"><br>
                 <input id="password" type='password' name='password' placeholder="*****" data-toggle="tooltip" title="Passwort" data-placement="bottom"><br>
-                <button type="button" class="btn btn-block shrink" onclick="login()">Log In</button>
+                <button type="button" class="btn btn-info btn-lg shrink" onclick="login()"><i class="fas fa-sign-in-alt"></i> Log In</button>
             </form>
         </div>
 
         <div id="logged_in" class="tab-pane fade center">
             <div>
                 <h2>Willkommen im Intranet.</h2>
-                Sie wurden erfolgreich eingeloggt.
+                <h3>Sie wurden erfolgreich eingeloggt.</h3>
             </div>
             <div>
-            <button type="button" class="btn nav_pane" onclick="window.location.href='user.jsp'">Benutzer-Management</button>
-            <button type="button" class="btn nav_pane" onclick="window.location.href='ConferenceRoomManager.jsp'">Conference Room Manager</button>
-            <button type="button" class="btn nav_pane" onclick="window.location.href='Chat.jsp'">Chat</button>
-            <button type="button" class="btn nav_pane" onclick="window.location.href='calendar.jsp'">Kalender</button>
-            <button type="button" class="btn nav_pane" onclick="window.location.href='customer.jsp'">Kunden Manager</button>
-            <button type="button" class="btn nav_pane" onclick="window.location.href='Comolaints.jsp'">Complaint Management</button>
-            <button type="button" class="btn nav_pane" onclick="window.location.href='crm.jsp'">Customer Relationship Management</button>
-            <button type="button" class="btn nav_pane" onclick="window.location.href='Tags.jsp'">Tags</button>
 
-            <button type="button" class="btn btn-block shrink" onclick="logout()">Logout</button>
+            <button type="button" class="btn btn-info btn-lg" onclick="window.location.href='index.jsp'"><i class="fas fa-home"></i> Zur Startseite</button>
+
+            <button type="button" class="btn btn-info btn-lg" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Log out</button>
             </div>
         </div>
         </div>
