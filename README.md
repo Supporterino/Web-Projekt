@@ -17,7 +17,10 @@ To finally run this frontend adapt it to your backend by editing the JavaScript.
 
 ## Built With
 
-* [Visual Studio Code](https://code.visualstudio.com/) - The web framework used
+* [jQuery](https://jquery.com/) - The web framework used
+* [Bootstrap 4](https://getbootstrap.com/) - The web framework/theme used
+* [Font Awesome](https://fontawesome.com/) - The theme used
+* [Visual Studio Code](https://code.visualstudio.com/) - The editor used
 
 ## Authors
 
@@ -27,4 +30,4 @@ See also the list of [contributors](https://github.com/your/project/contributors
 
 ## License
 
-This project is licensed under the GNU - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the GNU Lesser General Public License v3.0 - see the [LICENSE.md](LICENSE.md) file for details
