@@ -102,6 +102,11 @@ function create_Card() {
 
         }
 
+        //Creatin of the Emailpart
+
+        var sub_title3 = $("<a class='card-subtitle creation blockify'>").text(Users[i].email);
+        $(sub_title3).attr('href', 'mailto:' + Users[i].email);
+
         // Creation of the placeholder for the buttons
 
         var span1 = $("<span class='deluser'>");
@@ -123,7 +128,7 @@ function create_Card() {
             $(card_holder).append(card);
             $(card).append(card_header, card_body);
             $(card_header).append(header);
-            $(card_body).append(sub_title1, sub_title2, span1, span2);
+            $(card_body).append(sub_title1, sub_title2, sub_title3, span1, span2);
             $(span1).append(del_btn);
             $(del_btn).prepend("<i class='fas fa-trash-alt'></i>");
             $(span2).append(newpw_btn);
@@ -133,7 +138,7 @@ function create_Card() {
             $(card_holder).append(card);
             $(card).append(card_header, card_body);
             $(card_header).append(header);
-            $(card_body).append(sub_title1, sub_title2, span1);
+            $(card_body).append(sub_title1, sub_title2, sub_title3, span1);
             $(span1).append(react_btn);
             $(react_btn).prepend('<i class="fas fa-recycle"></i>');
         }
@@ -157,6 +162,7 @@ function create_Tablestructure(location) {
     var first = $("<th>").text("Vorname");
     var last = $("<th>").text("Nachname");
     var role = $("<th>").text("Rolle");
+    var email = $("<th>").text("Email");
     var action = $("<th>").text("Aktionen");
 
     // Creation the datecolumn considering the position of the table
@@ -179,7 +185,7 @@ function create_Tablestructure(location) {
     $(location).append(table);
     $(table).append(thead, tbody);
     $(thead).append(tr);
-    $(tr).append(first, last, date, role, action);
+    $(tr).append(first, last, date, role, email, action);
 }
 
 // Tabledata
@@ -226,6 +232,13 @@ function create_Table(location) {
 
         }
 
+        // Creation of the email
+
+        var email = $("<td>");
+        var emaild = $("<a>").text(Users[i].email);
+        $(emaild).attr('href', 'mailto:' + Users[i].email);
+        $(email).append(emaild);
+
         // Creation of the buttons considering the needed ones
 
         switch (location) {
@@ -249,7 +262,7 @@ function create_Table(location) {
             case "#tabs-1":
                 if (!Users[i].hasOwnProperty('deletionDate')) {
                     $("#tbod1").append(tr);
-                    $(tr).append(first, last, date, role, dropdown);
+                    $(tr).append(first, last, date, role, email, dropdown);
                     $(dropdown).append(dropdown_button, dropdown_menu);
                     $(dropdown_menu).append(dropdown_item1, dropdown_item2);
                     $(dropdown_button).prepend('<i class="fas fa-user-cog"></i>');
@@ -260,7 +273,7 @@ function create_Table(location) {
             case "#tabs-2":
                 if (Users[i].hasOwnProperty('deletionDate')) {
                     $("#tbod2").append(tr);
-                    $(tr).append(first, last, date, role, react_btn);
+                    $(tr).append(first, last, date, role, email, react_btn);
                     $(react_btn).prepend('<i class="fas fa-recycle"></i>');
                 }
                 break;
@@ -291,6 +304,7 @@ function create_Archive() {
     var first = $("<th>").text("Vorname");
     var last = $("<th>").text("Nachname");
     var role = $("<th>").text("Rolle");
+    var email = $("<th>").text("Email");
     var cdate = $("<th>").text("Erstellt am");
     var ddate = $("<th>").text("Gelöscht am");
 
@@ -301,7 +315,7 @@ function create_Archive() {
     $("#tabs-3").append(search3, table);
     $(table).append(thead, tbody);
     $(thead).append(tr);
-    $(tr).append(first, last, cdate, ddate, role);
+    $(tr).append(first, last, email, cdate, ddate, role);
 
     // Cycling  through the Users array and creation a tablerow for each one
 
@@ -329,6 +343,13 @@ function create_Archive() {
 
         }
 
+        // Creation of the email
+
+        var email = $("<td>");
+        var emaild = $("<a>").text(Users[i].email);
+        $(emaild).attr('href', 'mailto:' + Users[i].email);
+        $(email).append(emaild);
+
         // Creation of the datecolumn
 
         var cdated = $("<td>").text(Users[i].creationDate);
@@ -337,7 +358,7 @@ function create_Archive() {
         // Adding the row to the table
 
         $(tbody).append(trd);
-        $(trd).append(firstd, lastd, cdated, ddated, roled);
+        $(trd).append(firstd, lastd, email, cdated, ddated, roled);
     }
 }
 
@@ -463,9 +484,10 @@ function add_User() {
 
         $.ajax({
             type: "POST",
-            url: "http://h2669567.stratoserver.net:8080/intranet/update.jsp?action=newuser",
+            url: "http://h2669567.stratoserver.net:8080/intranet/update.jsp",
             cache: false,
             data: {
+                action: 'newuser',
                 email: $("#email").val(),
                 firstname: $("#vname").val(),
                 lastname: $("#nname").val(),
